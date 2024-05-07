@@ -37,7 +37,11 @@ Ao executar o código do exercício ... observei que ... conforme podemos ver na
 # Certificados
 
 
-- Certificado do Curso ABC
-![Curso ABC](certificados/sample.png)
+- Certificado do Curso Linux
+![Curso Linux](certificados/Linux.jpg)
+
+- Certificado do Curso Git
+![Curso Git](certificados/Git.jpg)
+
 
 
