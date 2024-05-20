@@ -1,0 +1,7 @@
+SELECT d.cddep, d.nmdep, d.dtnasc, MIN(total) AS valor_total_vendas FROM(
+SELECT v.cdvdd, ven.nmvdd, SUM(v.qtd * v.vrunt) AS total FROM tbvendas v
+JOIN tbvendedor ven ON ven.cdvdd = v.cdvdd
+WHERE v.status = 'Concluído'
+GROUP BY ven.nmvdd
+)AS valor_total_vendedor
+JOIN tbdependente d ON d.cdvdd = valor_total_vendedor.cdvdd

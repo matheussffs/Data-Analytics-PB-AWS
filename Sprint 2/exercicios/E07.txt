@@ -1,0 +1,4 @@
+SELECT autor.nome
+FROM autor
+LEFT JOIN livro ON livro.autor = autor.codautor
+WHERE livro.cod IS NULL

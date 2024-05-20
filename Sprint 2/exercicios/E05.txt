@@ -1,0 +1,6 @@
+SELECT autor.nome FROM autor
+JOIN livro ON livro.autor = autor.codautor
+JOIN editora ON livro.editora = editora.codeditora 
+JOIN endereco ON endereco.codendereco = editora.endereco 
+WHERE NOT endereco.estado = 'RIO GRANDE DO SUL' AND NOT endereco.estado = 'PARANÁ'
+GROUP BY autor.nome

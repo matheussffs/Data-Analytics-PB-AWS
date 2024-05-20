@@ -1,0 +1,11 @@
+SELECT v.cdpro, v.nmpro
+FROM (
+SELECT v.cdpro, v.nmpro, COUNT(v.cdpro) AS contagem FROM tbvendas v
+JOIN tbestoqueproduto p ON p.cdpro  = v.cdpro
+WHERE v.dtven BETWEEN '2014-02-03' AND '2018-02-02'
+GROUP BY v.cdpro, v.nmpro
+) AS quantidade_periodo
+JOIN tbvendas v ON v.cdpro = quantidade_periodo.cdpro
+GROUP BY v.nmpro
+ORDER BY contagem DESC
+LIMIT 1

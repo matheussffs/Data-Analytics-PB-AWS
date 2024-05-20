@@ -1,0 +1,9 @@
+SELECT tbvendedor.cdvdd, tbvendedor.nmvdd, contagem
+FROM (
+SELECT tbvendedor.cdvdd, tbvendedor.nmvdd, COUNT(*) AS contagem FROM tbvendedor
+JOIN tbvendas on tbvendas.cdvdd = tbvendedor.cdvdd
+group by tbvendedor.cdvdd, tbvendedor.nmvdd
+) AS contagem_vendas
+JOIN tbvendedor ON tbvendedor.cdvdd = contagem_vendas.cdvdd
+ORDER BY contagem DESC 
+LIMIT 1

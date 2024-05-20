@@ -1,0 +1,4 @@
+SELECT cdcli, nmcli, MAX(total) as gasto FROM(
+SELECT v.cdcli, v.nmcli, SUM(v.qtd * v.vrunt) AS total FROM tbvendas v
+GROUP BY cdcli
+)
