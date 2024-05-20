@@ -8,7 +8,7 @@ Olá, sou Matheus Fassicollo, natural de Erechim-RS, cursando quinto semestre de
 
 1. [Sprint 1](Sprint%201/README.md)
 - [x] Linux
-- [x] Git e Githubgi
+- [x] Git e Github
 
 2. [Sprint 2](Sprint%202/README.md)
 - [x] SQL

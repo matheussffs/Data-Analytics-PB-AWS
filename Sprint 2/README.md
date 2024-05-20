@@ -24,11 +24,10 @@ Ao executar o código do exercício ... observei que ... conforme podemos ver na
 # Certificados
 
 
-- Certificado do Curso Linux
-![Curso Linux](certificados/Linux.jpg)
+- Certificado do Curso AWS
+![Curso Linux](certificados/AWS Course Completion Certificate.pdf)
 
-- Certificado do Curso Git
-![Curso Git](certificados/Git.jpg)
+
 
 
 
