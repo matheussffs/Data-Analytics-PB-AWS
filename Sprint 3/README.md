@@ -25,7 +25,7 @@ Ao executar o código do exercício ... observei que ... conforme podemos ver na
 
 
 - Certificado do Curso AWS
-![Visualizar PDF](certificados/AWS Course Completion Certificate.pdf)
+![Visualizar PDF](Certificado AWS.pdf)
 
 
 
