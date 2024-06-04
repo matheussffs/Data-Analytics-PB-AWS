@@ -1,0 +1,6 @@
+from datetime import datetime
+nome = 'Matheus'
+idade = 20
+ano_atual = datetime.now().year
+cem_anos = ano_atual + (100 - idade)
+print(f"{cem_anos}")

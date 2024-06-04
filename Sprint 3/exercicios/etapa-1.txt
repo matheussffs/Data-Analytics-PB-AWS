@@ -1,0 +1,25 @@
+actor_count = {}
+
+with open('actors.csv', mode='r', encoding='utf-8') as arquivo:
+    dados = arquivo.readlines()
+
+    for dado in dados[1:]:
+        dado = dado.strip()
+        fields = dado.split(',')
+        actor = fields[0].strip()
+        
+        if len(fields) > 2:
+            try:
+                filmes = int(fields[2].strip())
+            except ValueError:
+                continue
+
+            if actor in actor_count:
+                actor_count[actor] += filmes
+            else:
+                actor_count[actor] = filmes
+
+top_actor = max(actor_count, key=actor_count.get)
+top_actor_count = actor_count[top_actor]
+
+print(f'{top_actor} {top_actor_count}')

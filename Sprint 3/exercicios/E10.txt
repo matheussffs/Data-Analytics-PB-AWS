@@ -1,0 +1,7 @@
+lista = ['abc', 'abc', 'abc', '123', 'abc', '123', '123']
+
+def duplicadas(lista):
+    return list(set(lista))
+
+nova_lista = duplicadas(lista)
+print(nova_lista)

@@ -1,0 +1,19 @@
+with open('actors.csv', mode='r', encoding='utf-8') as arquivo:
+    dados = arquivo.readlines()
+
+gross = []
+for line in lines[1:]: 
+    parts = line.split(',')
+    try:
+        gross_v = float(parts[1])
+        gross.append(gross_v)
+    except ValueError:
+        continue
+
+soma = sum(gross)
+
+quantidade = len(gross)
+
+media = soma / quantidade
+
+print(f"{media:.1f}")

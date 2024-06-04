@@ -1,0 +1,17 @@
+with open('actors.csv', mode='r', encoding='utf-8') as arquivo:
+    dados = arquivo.readlines()
+
+max_media = 0
+max_actor = ""
+
+for dado in dados[1:]:
+    parte = dado.split(',')
+    try:
+        media_movie = float(parte[3])
+        if media_movie > max_media:
+            max_media = media_movie
+            max_actor = parte[0]
+    except ValueError:
+        continue
+
+print(f"{max_actor} {max_media:.1f}M")

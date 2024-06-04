@@ -1,0 +1,20 @@
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+def dividir(lista):
+    tamanho = len(lista)
+    particao = tamanho // 3
+    resto = tamanho % 3
+    primeira = lista[:particao + (1 if resto > 0 else 0)]
+    segunda = lista[particao + (1 if resto > 0 else 0):2*particao + (1 if resto > 1 else 0)]
+    terceira = lista[2*particao + (1 if resto > 1 else 0):]
+    return primeira, segunda, terceira
+
+
+parte1, parte2, parte3 = dividir(lista)
+
+print(parte1, parte2, parte3)
+
+
+
+    
+    

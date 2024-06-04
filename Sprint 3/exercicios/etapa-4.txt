@@ -1,0 +1,17 @@
+with open('actors.csv', mode='r', encoding='utf-8') as arquivo:
+    dados = arquivo.readlines()
+
+movie_count = {}
+
+for dado in dados[1:]:
+    parte = dado.split(',')
+    movie = parte[4].strip()
+    if movie in movie_count:
+        movie_count[movie] += 1
+    else:
+        movie_count[movie] = 1
+
+movies = sorted(movie_count.items(), key=lambda x: (-x[1], x[0]))
+
+for i, (movie, count) in enumerate(movies, start=1):
+    print(f"{i} - 'O filme {movie} aparece {count} vez(es) no dataset'")

@@ -1,0 +1,7 @@
+frutas = ['maça', 'arara', 'audio', 'radio', 'radar', 'moto']
+
+for fruta in frutas:
+    if fruta[::-1] == fruta:
+        print(f'A palavra: {fruta} é um palíndromo')
+    else:
+        print(f'A palavra: {fruta} não é um palíndromo')

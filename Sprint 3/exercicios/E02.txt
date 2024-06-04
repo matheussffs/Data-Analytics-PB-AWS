@@ -1,0 +1,7 @@
+numeros = []
+for numero in range(1,4):
+    numeros.append(numero)
+    if numero % 2 == 0:
+        print (f'Par: {numero}')
+    else:
+        print(f'Ímpar: {numero}')

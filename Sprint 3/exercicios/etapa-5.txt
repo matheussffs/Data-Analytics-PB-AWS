@@ -1,0 +1,18 @@
+with open('actors.csv', mode='r', encoding='utf-8') as arquivo:
+    dados = arquivo.readlines()
+
+actors_info = []
+
+for dado in dados[1:]:
+    parte = dado.strip().split(',')
+    try:
+        actor = parte[0]
+        gross = float(parte[1])
+        actors_info.append((actor, gross))
+    except ValueError:
+        continue
+
+actors_sorted = sorted(actors_info, key=lambda x: -x[1])
+
+for actor, gross in actors_sorted:
+    print(f"{actor} - {gross}")
