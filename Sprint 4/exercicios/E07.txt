@@ -1,0 +1,8 @@
+def pares_ate(n: int):
+    return (num for num in range(2, n+1) if num % 2 == 0)
+
+n = 10
+gerador = pares_ate(n)
+
+for valor in gerador:
+    print(valor)

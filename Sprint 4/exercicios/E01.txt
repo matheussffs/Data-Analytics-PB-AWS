@@ -1,0 +1,13 @@
+with open('number.txt', 'r') as file:
+    numeros = list(map(int, file.readlines()))
+
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+
+pares_dec = sorted(pares, reverse=True)
+
+top_5_pares = pares_dec[:5]
+
+soma = sum(top_5_pares)
+
+print(top_5_pares)
+print(soma)
