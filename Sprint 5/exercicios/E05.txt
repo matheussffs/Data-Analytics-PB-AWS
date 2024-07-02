@@ -1,0 +1,22 @@
+import csv
+
+def processar_notas(nome_arquivo):
+    with open(nome_arquivo) as arquivo:
+        dados = csv.reader(arquivo)
+        
+        relatorio = []
+        
+        for dado in dados:
+            nome = dado[0]
+            notas = list(map(float, dado[1:]))
+            notas_ord = sorted(notas, reverse=True)[:3]
+            notas_int = list(map(int, notas_ord))  
+            media_maiores = round(sum(notas_ord) / 3, 2)
+            
+            relatorio.append(f"Nome: {nome} Notas: {notas_int} Média: {media_maiores:.2f}")
+        
+        return "\n".join(relatorio)
+
+nome_arquivo = 'estudantes.csv'
+relatorio = processar_notas(nome_arquivo)
+print(relatorio)

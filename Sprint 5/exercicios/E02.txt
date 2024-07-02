@@ -1,0 +1,11 @@
+def conta_vogais(texto: str) -> int:
+    
+    vogais = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+   
+    filtrar = filter(lambda c: c in vogais, texto)
+    
+    return len(list(filtrar))
+
+texto = "Análise de Dados"
+
+print(conta_vogais(texto))  

@@ -1,0 +1,28 @@
+def maiores_que_media(conteudo: dict) -> list:
+
+    precos = list(conteudo.values())
+    
+    
+    media_precos = sum(precos) / len(precos) if precos else 0
+    
+    
+    produtos_maiores_que_media = [(produto, preco) for produto, preco in conteudo.items() if preco > media_precos]
+    
+    
+    produtos_maiores_que_media.sort(key=lambda x: x[1])
+    
+    return produtos_maiores_que_media
+
+
+conteudo = {
+    'Arroz': 4.99,
+    'Feijão': 3.49,
+    'Macarrão': 2.99,
+    'Leite': 3.29,
+    'Pão': 1.99
+}
+
+resultado = maiores_que_media(conteudo)
+for produto, preco in resultado:
+    print(f"{produto}: {preco}")
+
