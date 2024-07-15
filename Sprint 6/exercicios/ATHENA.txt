@@ -1,0 +1,74 @@
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '1950' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 1950 AND 1959
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_1950
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '1960' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 1960 AND 1969
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_1960
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '1970' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 1970 AND 1979
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_1970
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '1980' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 1980 AND 1989
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_1980
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '1990' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 1990 AND 1999
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_1990
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '2000' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 2000 AND 2009
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_2000
+
+UNION ALL
+
+SELECT nome, total_ocorrencias, decada FROM (
+    SELECT nome, SUM(total) AS total_ocorrencias, '2010' AS decada
+    FROM meubanco.dados
+    WHERE ano BETWEEN 2010 AND 2019
+    GROUP BY nome
+    ORDER BY total_ocorrencias DESC
+    LIMIT 3
+) AS decada_2010;
