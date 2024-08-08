@@ -27,3 +27,6 @@ Olá, sou Matheus Fassicollo, natural de Erechim-RS, cursando quinto semestre de
 
 6. [Sprint 6](Sprint%206/README.md)
 - [x] Cursos AWS
+
+6. [Sprint 7](Sprint%207/README.md)
+- [x] Spark

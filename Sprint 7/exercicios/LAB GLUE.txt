@@ -1,0 +1,44 @@
+import sys
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+import pyspark.sql.functions as F
+
+args = getResolvedOptions(sys.argv, ['JOB_NAME', 'S3_INPUT_PATH', 'S3_TARGET_PATH'])
+
+sc = SparkContext()
+glueContext = GlueContext(sc)
+spark = glueContext.spark_session
+
+input_path = args['S3_INPUT_PATH']
+df = spark.read.csv(input_path, header=True, inferSchema=True)
+
+df.printSchema()
+
+df = df.withColumn("nome", F.upper(F.col("nome")))
+
+print("Contagem de linhas: ", df.count())
+
+contagem_nomes = df.groupBy("ano", "sexo").count()
+contagem_nomes.show()
+
+df = df.orderBy(F.desc("ano"))
+df.show()
+
+nome_feminino_top = df.filter(df.sexo == 'F').groupBy("ano", "nome").count().orderBy(F.desc("count")).first()
+print(f"Nome feminino mais frequente: {nome_feminino_top['nome']} no ano {nome_feminino_top['ano']} com {nome_feminino_top['count']} registros")
+
+nome_masculino_top = df.filter(df.sexo == 'M').groupBy("ano", "nome").count().orderBy(F.desc("count")).first()
+print(f"Nome masculino mais frequente: {nome_masculino_top['nome']} no ano {nome_masculino_top['ano']} com {nome_masculino_top['count']} registros")
+
+total_registros_ano = df.groupBy("ano").count().orderBy("ano")
+total_registros_ano.show()
+
+df_head_10 = df.orderBy("ano").limit(10)
+df_head_10.show()
+
+target_path = args['S3_TARGET_PATH']
+df.write.mode("overwrite").partitionBy("sexo", "ano").json(target_path)
+
+sc.stop()

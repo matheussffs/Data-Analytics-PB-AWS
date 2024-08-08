@@ -1,0 +1,151 @@
+import json
+import boto3
+import requests
+import os
+
+def lambda_handler(event, context):
+    tmdb_api_key = os.environ['TMDB_API_KEY']
+    s3_bucket_name = 'data-lake-do-matheus'
+    
+    urls = {
+        'series_paises': 'Raw/TMDB/JSON/2024-07-24/series_paises_producao.json',
+        'filmes_bilheteria': 'Raw/TMDB/JSON/2024-07-24/filmes_bilheteria.json',
+        'series_bilheteria': 'Raw/TMDB/JSON/2024-07-24/series_bilheteria.json',
+        'filmes_orcamento': 'Raw/TMDB/JSON/2024-07-24/filmes_orcamento.json',
+        'series_orcamento': 'Raw/TMDB/JSON/2024-07-24/series_orcamento.json'
+    }
+    
+    generos = [10749, 18]
+    url_tmdb = 'https://api.themoviedb.org/3'
+    
+    def buscar_filmes_genero(genero_id, max_filmes):
+        movies = []
+        page = 1
+        total_pages = 1
+        filme_count = 0
+        
+        while page <= total_pages and filme_count < max_filmes:
+            response = requests.get(f"{url_tmdb}/discover/movie", params={
+                'api_key': tmdb_api_key,
+                'with_genres': genero_id,
+                'page': page
+            })
+            data = response.json()
+            movies.extend(data['results'])
+            filme_count += len(data['results'])
+            total_pages = data['total_pages']
+            page += 1
+        
+        return movies[:max_filmes]
+    
+    def buscar_series_genero(genero_id, max_series):
+        series = []
+        page = 1
+        total_pages = 1
+        serie_count = 0
+        
+        while page <= total_pages and serie_count < max_series:
+            response = requests.get(f"{url_tmdb}/discover/tv", params={
+                'api_key': tmdb_api_key,
+                'with_genres': genero_id,
+                'page': page
+            })
+            data = response.json()
+            series.extend(data['results'])
+            serie_count += len(data['results'])
+            total_pages = data['total_pages']
+            page += 1
+        
+        return series[:max_series]
+    
+    def buscar_detalhes_filme(movie_id):
+        response = requests.get(f"{url_tmdb}/movie/{movie_id}", params={
+            'api_key': tmdb_api_key
+        })
+        return response.json()
+    
+    def buscar_detalhes_serie(tv_id):
+        response = requests.get(f"{url_tmdb}/tv/{tv_id}", params={
+            'api_key': tmdb_api_key
+        })
+        return response.json()
+    
+    max_itens = 500
+    total_movies = []
+    total_series = []
+    
+    for genero in generos:
+        filmes_genero = buscar_filmes_genero(genero, max_itens - len(total_movies))
+        total_movies.extend(filmes_genero)
+        if len(total_movies) >= max_itens:
+            break
+    
+    for genero in generos:
+        series_genero = buscar_series_genero(genero, max_itens - len(total_series))
+        total_series.extend(series_genero)
+        if len(total_series) >= max_itens:
+            break
+    
+    series_paises_producao = {}
+    filmes_bilheteria = {}
+    series_bilheteria = {}
+    filmes_orcamento = {}
+    series_orcamento = {}
+    
+    for movie in total_movies:
+        detalhes = buscar_detalhes_filme(movie['id'])
+        movie_titulo = detalhes.get('title')
+        paises = detalhes.get('production_countries', [])
+        series_paises_producao[movie_titulo] = [pais['name'] for pais in paises]
+        filmes_bilheteria[movie_titulo] = detalhes.get('revenue')
+        filmes_orcamento[movie_titulo] = detalhes.get('budget')
+    
+    for serie in total_series:
+        detalhes = buscar_detalhes_serie(serie['id'])
+        serie_titulo = detalhes.get('name')
+        paises = detalhes.get('production_countries', [])
+        series_paises_producao[serie_titulo] = [pais['name'] for pais in paises]
+        series_bilheteria[serie_titulo] = detalhes.get('revenue')
+        series_orcamento[serie_titulo] = detalhes.get('budget')
+    
+    s3 = boto3.client('s3')
+    
+    s3.put_object(
+        Bucket=s3_bucket_name,
+        Key=urls['series_paises'],
+        Body=json.dumps(series_paises_producao),
+        ContentType='application/json'
+    )
+    
+    s3.put_object(
+        Bucket=s3_bucket_name,
+        Key=urls['filmes_bilheteria'],
+        Body=json.dumps(filmes_bilheteria),
+        ContentType='application/json'
+    )
+    
+    s3.put_object(
+        Bucket=s3_bucket_name,
+        Key=urls['series_bilheteria'],
+        Body=json.dumps(series_bilheteria),
+        ContentType='application/json'
+    )
+    
+    s3.put_object(
+        Bucket=s3_bucket_name,
+        Key=urls['filmes_orcamento'],
+        Body=json.dumps(filmes_orcamento),
+        ContentType='application/json'
+    )
+    
+    s3.put_object(
+        Bucket=s3_bucket_name,
+        Key=urls['series_orcamento'],
+        Body=json.dumps(series_orcamento),
+        ContentType='application/json'
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Dados salvos com sucesso!')
+    }
