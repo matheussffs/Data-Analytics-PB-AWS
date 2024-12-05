@@ -1,9 +1,5 @@
 # Evidências
 
-
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
-
-
 ![Evidencia 1](evidencias/evidencia1.PNG)
 ![Evidencia 2](evidencias/evi2.PNG)
 ![Evidencia 3](evidencias/evi3.PNG)

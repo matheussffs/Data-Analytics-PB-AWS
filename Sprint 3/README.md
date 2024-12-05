@@ -1,31 +1,13 @@
-# Exercícios
-
-
-1. ...
-[Resposta Ex1.](exercicios/ex1.txt)
-
-
-2. ...
-[Resposta Ex2.](exercicios/ex2.txt)
-
-
-
-
-# Evidências
-
-
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
-
-
-![Evidencia 1](evidencias/sample.webp)
-
-
-
 # Certificados
 
+- Certificado do Curso Python
+![Certificado Python](certificados/python.pdf)
+
+- Certificado do Curso Estatística
+![Certificado Estatística com Python](certificados/Estatistica_Python.pdf)
 
 - Certificado do Curso AWS
-![Visualizar PDF](Certificado AWS.pdf)
+![Certificado AWS](certificados/Certificado_AWS.pdf)
 
 
 

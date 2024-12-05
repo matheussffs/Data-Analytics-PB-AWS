@@ -1,31 +1,10 @@
-# Exercícios
-
-
-1. ...
-[Resposta Ex1.](exercicios/ex1.txt)
-
-
-2. ...
-[Resposta Ex2.](exercicios/ex2.txt)
-
-
-
-
-# Evidências
-
-
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
-
-
-![Evidencia 1](evidencias/sample.webp)
-
-
-
 # Certificados
 
-
 - Certificado do Curso AWS
-![Visualizar PDF](AWS.pdf)
+![Visualizar PDF](certificados/AWS.pdf)
+
+- Certificado do Curso Docker
+![Certificado Docker](certificados/Docker.jpg)
 
 
 

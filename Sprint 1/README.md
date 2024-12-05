@@ -1,34 +1,13 @@
-# Exercícios
-
-
-1. ...
-[Resposta Ex1.](exercicios/ex1.txt)
-
-
-2. ...
-[Resposta Ex2.](exercicios/ex2.txt)
-
-
-
-
-# Evidências
-
-
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
-
-
-![Evidencia 1](evidencias/sample.webp)
-
-
-
 # Certificados
-
 
 - Certificado do Curso Linux
 ![Curso Linux](certificados/Linux.jpg)
 
 - Certificado do Curso Git
 ![Curso Git](certificados/Git.jpg)
+
+- Certificado do Curso Métodos Ágeis
+![Curso Métodos Ágeis](certificados/Metodos_Ageis.jpg)
 
 
 
