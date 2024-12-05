@@ -7,7 +7,7 @@
 ![Curso Git](certificados/Git.jpg)
 
 - Certificado do Curso Métodos Ágeis
-![Curso Métodos Ágeis](certificados/Metodos_Ageis.jpg)
+![Curso Métodos Ágeis](certificados/Metodos%20_Ageis.jpg)
 
 
 

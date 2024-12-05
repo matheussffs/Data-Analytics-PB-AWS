@@ -2,7 +2,7 @@ ___
 
 ## Apresentação
 
-Olá, sou Matheus Fassicollo, natural de Erechim-RS, cursando quinto semestre de Ciência da Computação na Universidade Regional Integrada do Alto Uruguai e das Missões(URI). Até o momento tenho experiência na parte de infra. Meus hobbies são os esportes e a tecnologia.
+Olá, sou Matheus Fassicollo, natural de Erechim-RS, cursando quinto semestre de Ciência da Computação na Universidade Regional Integrada do Alto Uruguai e das Missões(URI). Até o momento tenho experiência na parte de infra e na área de Dados. Meus hobbies são os esportes e a tecnologia.
 
 ## Sprints 
 
@@ -37,5 +37,5 @@ Olá, sou Matheus Fassicollo, natural de Erechim-RS, cursando quinto semestre de
 9. [Sprint 9](Sprint%209/README.md)
 - [x] Desafio
 
-10. [Sprint 10](Sprint%210/README.md)
+10. [Sprint 10](Sprint%2010/README.md)
 - [x] Desafio Final
